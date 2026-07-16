@@ -16,8 +16,8 @@ Name | Type | Description | Notes
 **ArchivedAt** | Pointer to **NullableInt32** |  | [optional] 
 **FromEmail** | Pointer to **string** | The sending address (re-verifies the mailbox when changed). | [optional] 
 **FromName** | Pointer to **string** | Display name. | [optional] 
-**Imap** | Pointer to [**UpdateSenderInputImap**](UpdateSenderInputImap.md) |  | [optional] 
-**Smtp** | Pointer to [**UpdateSenderInputSmtp**](UpdateSenderInputSmtp.md) |  | [optional] 
+**Imap** | Pointer to [**ImapConnectionUpdate**](ImapConnectionUpdate.md) |  | [optional] 
+**Smtp** | Pointer to [**SmtpConnectionUpdate**](SmtpConnectionUpdate.md) |  | [optional] 
 **TransportMode** | Pointer to **string** | How messages are carried: &#x60;smtp&#x60;, &#x60;provider_api&#x60;, &#x60;self_hosted&#x60;, or &#x60;voice&#x60;. | [optional] 
 **TransportProvider** | Pointer to **string** | Managed provider; omit for a plain cold/SMTP mailbox. | [optional] 
 
@@ -362,20 +362,20 @@ HasFromName returns a boolean if a field has been set.
 
 ### GetImap
 
-`func (o *UpdateSenderInput) GetImap() UpdateSenderInputImap`
+`func (o *UpdateSenderInput) GetImap() ImapConnectionUpdate`
 
 GetImap returns the Imap field if non-nil, zero value otherwise.
 
 ### GetImapOk
 
-`func (o *UpdateSenderInput) GetImapOk() (*UpdateSenderInputImap, bool)`
+`func (o *UpdateSenderInput) GetImapOk() (*ImapConnectionUpdate, bool)`
 
 GetImapOk returns a tuple with the Imap field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImap
 
-`func (o *UpdateSenderInput) SetImap(v UpdateSenderInputImap)`
+`func (o *UpdateSenderInput) SetImap(v ImapConnectionUpdate)`
 
 SetImap sets Imap field to given value.
 
@@ -387,20 +387,20 @@ HasImap returns a boolean if a field has been set.
 
 ### GetSmtp
 
-`func (o *UpdateSenderInput) GetSmtp() UpdateSenderInputSmtp`
+`func (o *UpdateSenderInput) GetSmtp() SmtpConnectionUpdate`
 
 GetSmtp returns the Smtp field if non-nil, zero value otherwise.
 
 ### GetSmtpOk
 
-`func (o *UpdateSenderInput) GetSmtpOk() (*UpdateSenderInputSmtp, bool)`
+`func (o *UpdateSenderInput) GetSmtpOk() (*SmtpConnectionUpdate, bool)`
 
 GetSmtpOk returns a tuple with the Smtp field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSmtp
 
-`func (o *UpdateSenderInput) SetSmtp(v UpdateSenderInputSmtp)`
+`func (o *UpdateSenderInput) SetSmtp(v SmtpConnectionUpdate)`
 
 SetSmtp sets Smtp field to given value.
 

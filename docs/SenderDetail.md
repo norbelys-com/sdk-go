@@ -29,8 +29,8 @@ Name | Type | Description | Notes
 **TransportMode** | **string** | How messages are carried: &#x60;smtp&#x60;, &#x60;provider_api&#x60;, &#x60;self_hosted&#x60;, or &#x60;voice&#x60;. | 
 **TransportProvider** | **NullableString** |  | 
 **UpdatedAt** | Pointer to **interface{}** |  | [optional] 
-**Usage** | Pointer to [**SenderDetailUsage**](SenderDetailUsage.md) |  | [optional] 
-**Warmup** | Pointer to [**SenderDetailWarmup**](SenderDetailWarmup.md) |  | [optional] 
+**Usage** | Pointer to [**SenderUsage**](SenderUsage.md) |  | [optional] 
+**Warmup** | Pointer to [**SenderWarmupStatus**](SenderWarmupStatus.md) |  | [optional] 
 
 ## Methods
 
@@ -738,20 +738,20 @@ HasUpdatedAt returns a boolean if a field has been set.
 UnsetUpdatedAt ensures that no value is present for UpdatedAt, not even an explicit nil
 ### GetUsage
 
-`func (o *SenderDetail) GetUsage() SenderDetailUsage`
+`func (o *SenderDetail) GetUsage() SenderUsage`
 
 GetUsage returns the Usage field if non-nil, zero value otherwise.
 
 ### GetUsageOk
 
-`func (o *SenderDetail) GetUsageOk() (*SenderDetailUsage, bool)`
+`func (o *SenderDetail) GetUsageOk() (*SenderUsage, bool)`
 
 GetUsageOk returns a tuple with the Usage field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetUsage
 
-`func (o *SenderDetail) SetUsage(v SenderDetailUsage)`
+`func (o *SenderDetail) SetUsage(v SenderUsage)`
 
 SetUsage sets Usage field to given value.
 
@@ -763,20 +763,20 @@ HasUsage returns a boolean if a field has been set.
 
 ### GetWarmup
 
-`func (o *SenderDetail) GetWarmup() SenderDetailWarmup`
+`func (o *SenderDetail) GetWarmup() SenderWarmupStatus`
 
 GetWarmup returns the Warmup field if non-nil, zero value otherwise.
 
 ### GetWarmupOk
 
-`func (o *SenderDetail) GetWarmupOk() (*SenderDetailWarmup, bool)`
+`func (o *SenderDetail) GetWarmupOk() (*SenderWarmupStatus, bool)`
 
 GetWarmupOk returns a tuple with the Warmup field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetWarmup
 
-`func (o *SenderDetail) SetWarmup(v SenderDetailWarmup)`
+`func (o *SenderDetail) SetWarmup(v SenderWarmupStatus)`
 
 SetWarmup sets Warmup field to given value.
 

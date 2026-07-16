@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Sending** | Pointer to [**DomainUpdateParamsSending**](DomainUpdateParamsSending.md) |  | [optional] 
-**Tracking** | Pointer to [**DomainUpdateParamsTracking**](DomainUpdateParamsTracking.md) |  | [optional] 
+**Sending** | Pointer to [**DomainSendingUpdateParams**](DomainSendingUpdateParams.md) |  | [optional] 
+**Tracking** | Pointer to [**DomainTrackingUpdateParams**](DomainTrackingUpdateParams.md) |  | [optional] 
 **Version** | **int32** | Optimistic concurrency version; must match the current row. | 
 
 ## Methods
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetSending
 
-`func (o *DomainUpdateParams) GetSending() DomainUpdateParamsSending`
+`func (o *DomainUpdateParams) GetSending() DomainSendingUpdateParams`
 
 GetSending returns the Sending field if non-nil, zero value otherwise.
 
 ### GetSendingOk
 
-`func (o *DomainUpdateParams) GetSendingOk() (*DomainUpdateParamsSending, bool)`
+`func (o *DomainUpdateParams) GetSendingOk() (*DomainSendingUpdateParams, bool)`
 
 GetSendingOk returns a tuple with the Sending field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetSending
 
-`func (o *DomainUpdateParams) SetSending(v DomainUpdateParamsSending)`
+`func (o *DomainUpdateParams) SetSending(v DomainSendingUpdateParams)`
 
 SetSending sets Sending field to given value.
 
@@ -54,20 +54,20 @@ HasSending returns a boolean if a field has been set.
 
 ### GetTracking
 
-`func (o *DomainUpdateParams) GetTracking() DomainUpdateParamsTracking`
+`func (o *DomainUpdateParams) GetTracking() DomainTrackingUpdateParams`
 
 GetTracking returns the Tracking field if non-nil, zero value otherwise.
 
 ### GetTrackingOk
 
-`func (o *DomainUpdateParams) GetTrackingOk() (*DomainUpdateParamsTracking, bool)`
+`func (o *DomainUpdateParams) GetTrackingOk() (*DomainTrackingUpdateParams, bool)`
 
 GetTrackingOk returns a tuple with the Tracking field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTracking
 
-`func (o *DomainUpdateParams) SetTracking(v DomainUpdateParamsTracking)`
+`func (o *DomainUpdateParams) SetTracking(v DomainTrackingUpdateParams)`
 
 SetTracking sets Tracking field to given value.
 

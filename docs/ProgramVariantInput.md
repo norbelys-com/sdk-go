@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Content** | Pointer to [**ProgramVariantInputContent**](ProgramVariantInputContent.md) |  | [optional] 
+**Content** | Pointer to [**EmailVariantContent**](EmailVariantContent.md) | The arm&#39;s email content (subject/html/text, optional AI directive). | [optional] 
 **Label** | Pointer to **string** | Short arm label, e.g. A / B. | [optional] 
 **Weight** | Pointer to **int32** | Relative distribution weight among the step&#39;s live arms. | [optional] 
 **Archived** | Pointer to **bool** | Set true (with id) to archive this arm. | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetContent
 
-`func (o *ProgramVariantInput) GetContent() ProgramVariantInputContent`
+`func (o *ProgramVariantInput) GetContent() EmailVariantContent`
 
 GetContent returns the Content field if non-nil, zero value otherwise.
 
 ### GetContentOk
 
-`func (o *ProgramVariantInput) GetContentOk() (*ProgramVariantInputContent, bool)`
+`func (o *ProgramVariantInput) GetContentOk() (*EmailVariantContent, bool)`
 
 GetContentOk returns a tuple with the Content field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetContent
 
-`func (o *ProgramVariantInput) SetContent(v ProgramVariantInputContent)`
+`func (o *ProgramVariantInput) SetContent(v EmailVariantContent)`
 
 SetContent sets Content field to given value.
 

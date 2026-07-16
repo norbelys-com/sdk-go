@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Notify** | Pointer to [**IntegrationConfigNotify**](IntegrationConfigNotify.md) |  | [optional] 
+**Notify** | Pointer to [**IntegrationNotifyConfig**](IntegrationNotifyConfig.md) |  | [optional] 
 **PushOut** | Pointer to **bool** | Whether to push outcomes (replies) back to this provider&#39;s timeline; on unless set to false. | [optional] 
 **SlackChannelId** | Pointer to **NullableString** |  | [optional] 
 **SlackChannelName** | Pointer to **NullableString** |  | [optional] 
@@ -31,20 +31,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetNotify
 
-`func (o *IntegrationConfig) GetNotify() IntegrationConfigNotify`
+`func (o *IntegrationConfig) GetNotify() IntegrationNotifyConfig`
 
 GetNotify returns the Notify field if non-nil, zero value otherwise.
 
 ### GetNotifyOk
 
-`func (o *IntegrationConfig) GetNotifyOk() (*IntegrationConfigNotify, bool)`
+`func (o *IntegrationConfig) GetNotifyOk() (*IntegrationNotifyConfig, bool)`
 
 GetNotifyOk returns a tuple with the Notify field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetNotify
 
-`func (o *IntegrationConfig) SetNotify(v IntegrationConfigNotify)`
+`func (o *IntegrationConfig) SetNotify(v IntegrationNotifyConfig)`
 
 SetNotify sets Notify field to given value.
 

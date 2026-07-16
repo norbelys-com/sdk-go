@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **SignatureHtml** | Pointer to **string** | HTML signature appended to every send. | [optional] 
 **FromEmail** | **string** | The sending address. | 
 **FromName** | **string** | Display name. | 
-**Imap** | Pointer to [**SmtpSenderInputImap**](SmtpSenderInputImap.md) |  | [optional] 
+**Imap** | Pointer to [**ConnectionSettings**](ConnectionSettings.md) |  | [optional] 
 **Smtp** | [**SmtpConnectionSettings**](SmtpConnectionSettings.md) |  | 
 **TransportMode** | **interface{}** |  | 
 **TransportProvider** | **string** | The voice provider key. | 
@@ -254,20 +254,20 @@ SetFromName sets FromName field to given value.
 
 ### GetImap
 
-`func (o *CreateSenderInput) GetImap() SmtpSenderInputImap`
+`func (o *CreateSenderInput) GetImap() ConnectionSettings`
 
 GetImap returns the Imap field if non-nil, zero value otherwise.
 
 ### GetImapOk
 
-`func (o *CreateSenderInput) GetImapOk() (*SmtpSenderInputImap, bool)`
+`func (o *CreateSenderInput) GetImapOk() (*ConnectionSettings, bool)`
 
 GetImapOk returns a tuple with the Imap field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetImap
 
-`func (o *CreateSenderInput) SetImap(v SmtpSenderInputImap)`
+`func (o *CreateSenderInput) SetImap(v ConnectionSettings)`
 
 SetImap sets Imap field to given value.
 

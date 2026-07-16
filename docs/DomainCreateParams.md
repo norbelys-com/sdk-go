@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **Capability** | Pointer to **string** | What the domain is for: &#x60;sending&#x60;, &#x60;monitoring&#x60;, or &#x60;tracking&#x60;. Defaults to &#x60;sending&#x60;. | [optional] [default to "sending"]
 **Domain** | **string** | The bare DNS name. | 
-**Monitoring** | Pointer to [**DomainCreateParamsMonitoring**](DomainCreateParamsMonitoring.md) |  | [optional] 
-**Tracking** | Pointer to [**DomainCreateParamsTracking**](DomainCreateParamsTracking.md) |  | [optional] 
+**Monitoring** | Pointer to [**DomainMonitoringParams**](DomainMonitoringParams.md) |  | [optional] 
+**Tracking** | Pointer to [**DomainTrackingParams**](DomainTrackingParams.md) |  | [optional] 
 
 ## Methods
 
@@ -75,20 +75,20 @@ SetDomain sets Domain field to given value.
 
 ### GetMonitoring
 
-`func (o *DomainCreateParams) GetMonitoring() DomainCreateParamsMonitoring`
+`func (o *DomainCreateParams) GetMonitoring() DomainMonitoringParams`
 
 GetMonitoring returns the Monitoring field if non-nil, zero value otherwise.
 
 ### GetMonitoringOk
 
-`func (o *DomainCreateParams) GetMonitoringOk() (*DomainCreateParamsMonitoring, bool)`
+`func (o *DomainCreateParams) GetMonitoringOk() (*DomainMonitoringParams, bool)`
 
 GetMonitoringOk returns a tuple with the Monitoring field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetMonitoring
 
-`func (o *DomainCreateParams) SetMonitoring(v DomainCreateParamsMonitoring)`
+`func (o *DomainCreateParams) SetMonitoring(v DomainMonitoringParams)`
 
 SetMonitoring sets Monitoring field to given value.
 
@@ -100,20 +100,20 @@ HasMonitoring returns a boolean if a field has been set.
 
 ### GetTracking
 
-`func (o *DomainCreateParams) GetTracking() DomainCreateParamsTracking`
+`func (o *DomainCreateParams) GetTracking() DomainTrackingParams`
 
 GetTracking returns the Tracking field if non-nil, zero value otherwise.
 
 ### GetTrackingOk
 
-`func (o *DomainCreateParams) GetTrackingOk() (*DomainCreateParamsTracking, bool)`
+`func (o *DomainCreateParams) GetTrackingOk() (*DomainTrackingParams, bool)`
 
 GetTrackingOk returns a tuple with the Tracking field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetTracking
 
-`func (o *DomainCreateParams) SetTracking(v DomainCreateParamsTracking)`
+`func (o *DomainCreateParams) SetTracking(v DomainTrackingParams)`
 
 SetTracking sets Tracking field to given value.
 

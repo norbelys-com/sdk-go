@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## FilesCreate
 
-> File FilesCreate(ctx).FileUpload(fileUpload).IdempotencyKey(idempotencyKey).Execute()
+> FileObject FilesCreate(ctx).FileUpload(fileUpload).IdempotencyKey(idempotencyKey).Execute()
 
 Upload a public file
 
@@ -39,7 +39,7 @@ func main() {
 		fmt.Fprintf(os.Stderr, "Error when calling `FilesAPI.FilesCreate``: %v\n", err)
 		fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
 	}
-	// response from `FilesCreate`: File
+	// response from `FilesCreate`: FileObject
 	fmt.Fprintf(os.Stdout, "Response from `FilesAPI.FilesCreate`: %v\n", resp)
 }
 ```
@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**File**](File.md)
+[**FileObject**](FileObject.md)
 
 ### Authorization
 

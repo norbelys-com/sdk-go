@@ -1,7 +1,7 @@
 /*
 Norbelys API
 
-The **Norbelys API** is a single, predictable REST surface for cold email and outreach — people, senders, programs, and sending all live behind the five patterns below. Developer-first and AI-first: every name is either already invented (Schema.org) or obvious.  ## Authentication  Every request authenticates with an **org-scoped API key**. Create one in **Settings → API keys** and send it as a bearer token:  ```http GET https://api.norbelys.com/v1/people Authorization: Bearer ak_live_… ```  Interactive agents may instead use OAuth 2.1 (see `/auth.md` and the `/.well-known/oauth-protected-resource` metadata).  ## Conventions  - **Base URL** — `https://api.norbelys.com/v1`. - **JSON in, JSON out.** Timestamps are ISO-8601 in UTC. - **Cursor pagination.** List endpoints take `limit` + `cursor` and return   `{ data, hasMore, nextCursor }` (offset-paged tables add `page` + `total`). - **Expansions.** Detail GETs take an `expand[]` query param to inline related   data (e.g. `GET /people/{id}?expand[]=timeline`) instead of extra calls. - **Soft deletes.** Anything that has been used is archived, never hard-deleted —   `DELETE` archives the resource and returns it.  ## Errors  Failures return the same envelope on every 4xx/5xx, with the matching HTTP status:  ```json { \"error\": { \"type\": \"invalid_request\", \"code\": \"invalid_param\",             \"message\": \"…\", \"hint\": \"…\", \"doc_url\": \"…\" } } ```  `type` is a broad, machine-routable category derived from the status; `code` is the stable machine contract you branch on (never the human `message`). See the `Error` schema.  ## Idempotency  Every `POST` accepts an optional **`Idempotency-Key`** header. Reuse the same key to replay the original result for 24h instead of re-executing — so a retried create can never double-charge or duplicate a record.  ## Rate limits & versioning  Abuse control is enforced at the edge; responses advertise the policy via the `RateLimit-Policy` header, and a `429` carries `Retry-After`. The API is versioned in the URL path (`/v1`). Breaking changes ship under a new version; a retiring surface is announced with `Deprecation` + `Sunset` response headers at least 90 days ahead.
+The **Norbelys API** is a single, predictable REST surface for cold email and outreach — people, senders, programs, and sending all live behind the five patterns below. Developer-first and AI-first: every name is either already invented (Schema.org) or obvious.  ## Authentication  Every request authenticates with an **org-scoped API key**. Create one in **Settings → API keys** and send it as a bearer token:  ```http GET https://api.norbelys.com/v1/people Authorization: Bearer ak_live_… ```  Interactive agents may instead use OAuth 2.1 (see `/auth.md` and the `/.well-known/oauth-protected-resource` metadata).  ## Conventions  - **Base URL** — `https://api.norbelys.com/v1`. - **JSON in, JSON out.** Timestamps are ISO-8601 in UTC. - **Cursor pagination.** List endpoints take `limit` + `cursor` and return   `{ data, hasMore, nextCursor }` (offset-paged tables add `page` + `total`). - **Expansions.** Detail GETs take an `expand[]` query param to inline related   data (e.g. `GET /people/{id}?expand[]=timeline`) instead of extra calls. - **Soft deletes.** Anything that has been used is archived, never hard-deleted —   `DELETE` archives the resource and returns it.  ## Errors  Failures return the same envelope on every 4xx/5xx, with the matching HTTP status:  ```json { \"error\": { \"type\": \"invalid_request\", \"code\": \"invalid_param\",             \"message\": \"…\", \"hint\": \"…\", \"doc_url\": \"…\" } } ```  `type` is a broad, machine-routable category derived from the status; `code` is the stable machine contract you branch on (never the human `message`). See the `ApiError` schema.  ## Idempotency  Every `POST` accepts an optional **`Idempotency-Key`** header. Reuse the same key to replay the original result for 24h instead of re-executing — so a retried create can never double-charge or duplicate a record.  ## Rate limits & versioning  Abuse control is enforced at the edge; responses advertise the policy via the `RateLimit-Policy` header, and a `429` carries `Retry-After`. The API is versioned in the URL path (`/v1`). Breaking changes ship under a new version; a retiring surface is announced with `Deprecation` + `Sunset` response headers at least 90 days ahead.
 
 API version: 0.0.1
 */
@@ -116,7 +116,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -127,7 +127,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -138,7 +138,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -149,7 +149,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -160,7 +160,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -171,7 +171,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -182,7 +182,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -193,7 +193,7 @@ func (a *MessagesAPIService) MessagesAttachmentExecute(r ApiMessagesAttachmentRe
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -306,7 +306,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -317,7 +317,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -328,7 +328,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -339,7 +339,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -350,7 +350,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -361,7 +361,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -372,7 +372,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -383,7 +383,7 @@ func (a *MessagesAPIService) MessagesAttachmentsExecute(r ApiMessagesAttachments
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -513,7 +513,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -524,7 +524,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -535,7 +535,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -546,7 +546,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -557,7 +557,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -568,7 +568,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -579,7 +579,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -590,7 +590,7 @@ func (a *MessagesAPIService) MessagesCreateExecute(r ApiMessagesCreateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -703,7 +703,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -714,7 +714,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -725,7 +725,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -736,7 +736,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -747,7 +747,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -758,7 +758,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -769,7 +769,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -780,7 +780,7 @@ func (a *MessagesAPIService) MessagesFindExecute(r ApiMessagesFindRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1051,7 +1051,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1062,7 +1062,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1073,7 +1073,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1084,7 +1084,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1095,7 +1095,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1106,7 +1106,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1117,7 +1117,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1128,7 +1128,7 @@ func (a *MessagesAPIService) MessagesListExecute(r ApiMessagesListRequest) (*Mes
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1241,7 +1241,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1252,7 +1252,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1263,7 +1263,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1274,7 +1274,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1285,7 +1285,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1296,7 +1296,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1307,7 +1307,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1318,7 +1318,7 @@ func (a *MessagesAPIService) MessagesSourceExecute(r ApiMessagesSourceRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1439,7 +1439,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			error: localVarHTTPResponse.Status,
 		}
 		if localVarHTTPResponse.StatusCode == 400 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1450,7 +1450,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 401 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1461,7 +1461,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 403 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1472,7 +1472,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 404 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1483,7 +1483,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 409 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1494,7 +1494,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 422 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1505,7 +1505,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 429 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()
@@ -1516,7 +1516,7 @@ func (a *MessagesAPIService) MessagesUpdateExecute(r ApiMessagesUpdateRequest) (
 			return localVarReturnValue, localVarHTTPResponse, newErr
 		}
 		if localVarHTTPResponse.StatusCode == 500 {
-			var v Error
+			var v ApiError
 			err = a.client.decode(&v, localVarBody, localVarHTTPResponse.Header.Get("Content-Type"))
 			if err != nil {
 				newErr.error = err.Error()

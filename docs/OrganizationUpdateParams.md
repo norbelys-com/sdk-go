@@ -4,10 +4,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Alerts** | Pointer to [**OrganizationUpdateParamsAlerts**](OrganizationUpdateParamsAlerts.md) |  | [optional] 
-**BouncePolicy** | Pointer to [**OrganizationUpdateParamsBouncePolicy**](OrganizationUpdateParamsBouncePolicy.md) |  | [optional] 
+**Alerts** | Pointer to [**OrganizationAlertsParams**](OrganizationAlertsParams.md) |  | [optional] 
+**BouncePolicy** | Pointer to [**OrganizationBouncePolicyParams**](OrganizationBouncePolicyParams.md) |  | [optional] 
 **Complete** | Pointer to **bool** | Mark onboarding complete (only applied once the organization is provisioned). | [optional] 
-**Profile** | Pointer to [**OrganizationUpdateParamsProfile**](OrganizationUpdateParamsProfile.md) |  | [optional] 
+**Profile** | Pointer to [**OrganizationProfileParams**](OrganizationProfileParams.md) |  | [optional] 
 
 ## Methods
 
@@ -30,20 +30,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetAlerts
 
-`func (o *OrganizationUpdateParams) GetAlerts() OrganizationUpdateParamsAlerts`
+`func (o *OrganizationUpdateParams) GetAlerts() OrganizationAlertsParams`
 
 GetAlerts returns the Alerts field if non-nil, zero value otherwise.
 
 ### GetAlertsOk
 
-`func (o *OrganizationUpdateParams) GetAlertsOk() (*OrganizationUpdateParamsAlerts, bool)`
+`func (o *OrganizationUpdateParams) GetAlertsOk() (*OrganizationAlertsParams, bool)`
 
 GetAlertsOk returns a tuple with the Alerts field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetAlerts
 
-`func (o *OrganizationUpdateParams) SetAlerts(v OrganizationUpdateParamsAlerts)`
+`func (o *OrganizationUpdateParams) SetAlerts(v OrganizationAlertsParams)`
 
 SetAlerts sets Alerts field to given value.
 
@@ -55,20 +55,20 @@ HasAlerts returns a boolean if a field has been set.
 
 ### GetBouncePolicy
 
-`func (o *OrganizationUpdateParams) GetBouncePolicy() OrganizationUpdateParamsBouncePolicy`
+`func (o *OrganizationUpdateParams) GetBouncePolicy() OrganizationBouncePolicyParams`
 
 GetBouncePolicy returns the BouncePolicy field if non-nil, zero value otherwise.
 
 ### GetBouncePolicyOk
 
-`func (o *OrganizationUpdateParams) GetBouncePolicyOk() (*OrganizationUpdateParamsBouncePolicy, bool)`
+`func (o *OrganizationUpdateParams) GetBouncePolicyOk() (*OrganizationBouncePolicyParams, bool)`
 
 GetBouncePolicyOk returns a tuple with the BouncePolicy field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetBouncePolicy
 
-`func (o *OrganizationUpdateParams) SetBouncePolicy(v OrganizationUpdateParamsBouncePolicy)`
+`func (o *OrganizationUpdateParams) SetBouncePolicy(v OrganizationBouncePolicyParams)`
 
 SetBouncePolicy sets BouncePolicy field to given value.
 
@@ -105,20 +105,20 @@ HasComplete returns a boolean if a field has been set.
 
 ### GetProfile
 
-`func (o *OrganizationUpdateParams) GetProfile() OrganizationUpdateParamsProfile`
+`func (o *OrganizationUpdateParams) GetProfile() OrganizationProfileParams`
 
 GetProfile returns the Profile field if non-nil, zero value otherwise.
 
 ### GetProfileOk
 
-`func (o *OrganizationUpdateParams) GetProfileOk() (*OrganizationUpdateParamsProfile, bool)`
+`func (o *OrganizationUpdateParams) GetProfileOk() (*OrganizationProfileParams, bool)`
 
 GetProfileOk returns a tuple with the Profile field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetProfile
 
-`func (o *OrganizationUpdateParams) SetProfile(v OrganizationUpdateParamsProfile)`
+`func (o *OrganizationUpdateParams) SetProfile(v OrganizationProfileParams)`
 
 SetProfile sets Profile field to given value.
 

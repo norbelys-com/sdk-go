@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Definition** | Pointer to [**SegmentUpdateParamsDefinition**](SegmentUpdateParamsDefinition.md) |  | [optional] 
+**Definition** | Pointer to [**AudienceFilter**](AudienceFilter.md) | Replace the saved filter that defines membership. | [optional] 
 **Description** | Pointer to **NullableString** |  | [optional] 
 **Name** | Pointer to **string** | New display name for the segment. | [optional] 
 
@@ -29,20 +29,20 @@ but it doesn't guarantee that properties required by API are set
 
 ### GetDefinition
 
-`func (o *SegmentUpdateParams) GetDefinition() SegmentUpdateParamsDefinition`
+`func (o *SegmentUpdateParams) GetDefinition() AudienceFilter`
 
 GetDefinition returns the Definition field if non-nil, zero value otherwise.
 
 ### GetDefinitionOk
 
-`func (o *SegmentUpdateParams) GetDefinitionOk() (*SegmentUpdateParamsDefinition, bool)`
+`func (o *SegmentUpdateParams) GetDefinitionOk() (*AudienceFilter, bool)`
 
 GetDefinitionOk returns a tuple with the Definition field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetDefinition
 
-`func (o *SegmentUpdateParams) SetDefinition(v SegmentUpdateParamsDefinition)`
+`func (o *SegmentUpdateParams) SetDefinition(v AudienceFilter)`
 
 SetDefinition sets Definition field to given value.
 

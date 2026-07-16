@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **After** | Pointer to **float32** | Only count activity at/after this instant (epoch milliseconds). | [optional] 
 **Before** | Pointer to **float32** | Only count activity before this instant (epoch milliseconds). | [optional] 
 **CampaignIds** | Pointer to **[]string** | Scope to these campaigns (matches ANY of them). Omit for activity in any campaign. | [optional] 
-**Link** | Pointer to [**AudienceActivityParamsLink**](AudienceActivityParamsLink.md) |  | [optional] 
+**Link** | Pointer to [**AudienceActivityLinkFilter**](AudienceActivityLinkFilter.md) |  | [optional] 
 **StepIds** | Pointer to **[]string** | Scope to these cadence steps (matches ANY of them). | [optional] 
 **VariantIds** | Pointer to **[]string** | Scope to these A/B variants (matches ANY of them). | [optional] 
 **WithinDays** | Pointer to **int32** | Only count activity in the last N days. | [optional] 
@@ -129,20 +129,20 @@ HasCampaignIds returns a boolean if a field has been set.
 
 ### GetLink
 
-`func (o *AudienceActivityParams) GetLink() AudienceActivityParamsLink`
+`func (o *AudienceActivityParams) GetLink() AudienceActivityLinkFilter`
 
 GetLink returns the Link field if non-nil, zero value otherwise.
 
 ### GetLinkOk
 
-`func (o *AudienceActivityParams) GetLinkOk() (*AudienceActivityParamsLink, bool)`
+`func (o *AudienceActivityParams) GetLinkOk() (*AudienceActivityLinkFilter, bool)`
 
 GetLinkOk returns a tuple with the Link field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
 ### SetLink
 
-`func (o *AudienceActivityParams) SetLink(v AudienceActivityParamsLink)`
+`func (o *AudienceActivityParams) SetLink(v AudienceActivityLinkFilter)`
 
 SetLink sets Link field to given value.
 
